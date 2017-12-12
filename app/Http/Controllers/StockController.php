@@ -1,17 +1,12 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Stock;
-
-
-
+use DB;
 class StockController extends Controller
 {
-
     /**
      * Display a listing of the resource.
      *
@@ -23,12 +18,10 @@ class StockController extends Controller
       $stocks = Stock::where('stage','LIKE','%'.$cari.'%')->paginate(5);
       return view('stock.index',compact('stocks'))
           ->with('i', ($request->input('page', 1) - 1) * 5);
-
 #        $stocks = Stock::orderBy('stock_id')->paginate(5);
 #        return view('stock.index',compact('stocks'))
 #            ->with('i', ($request->input('page', 1) - 1) * 5);
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -39,9 +32,6 @@ class StockController extends Controller
         $product = \App\product::pluck('product_name','product_id');
         return view('stock.create')->with('product',$product);
     }
-
-
-
     /**
      * Store a newly created resource in storage.
      *
@@ -50,19 +40,35 @@ class StockController extends Controller
      */
     public function store(Request $request)
     {
+        $product = \App\product::pluck('product_name','product_id');
         $this->validate($request, [
             'product_id' => 'required',
             'stock_increase' => 'required',
             'stock_decrease' => 'required',
-            'stage' => 'required'
+            'stage' => 'required',
+            'stock_quantity'
         ]);
-
-
-        $stock = Stock::create($request->all());
+        $id_prod = $request->product_id;
+        $inc = $request->stock_increase;
+        $dec = $request->stock_decrease;
+        $prev_total = DB::table('products')->where('product_id', $id_prod)->get();
+        foreach ($prev_total as $pq)
+          $now = $pq->product_quantity;
+        $total = $now + $inc - $dec;
+        DB::table('products')
+          ->where('product_id',$id_prod)
+          ->update(['product_quantity' => $total]);
+        $stock = array(
+          'product_id' => $request->product_id,
+          'stock_increase' => $request->stock_increase,
+          'stock_decrease' => $request->stock_decrease,
+          'stock_quantity' => $total,
+          'stage'=> $request->stage,
+          );
+          DB::table('stocks')->insert($stock);
         return redirect()->route('stock.index')
                         ->with('success','Data berhasil ditambahkan');
     }
-
     /**
      * Display the specified resource.
      *
@@ -74,7 +80,6 @@ class StockController extends Controller
         $stock = Stock::find($stock_id);
         return view('stock.show',compact('stock'));
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -87,7 +92,6 @@ class StockController extends Controller
         $stock = Stock::find($stock_id);
         return view('stock.edit',compact('stock','product'));
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -102,12 +106,10 @@ class StockController extends Controller
           'stock_increase' => 'required',
           'stock_decrease' => 'required',
         ]);
-
         Stock::find($stock_id)->update($request->all());
         return redirect()->route('stock.index')
                         ->with('success','Item updated successfully');
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -121,7 +123,6 @@ class StockController extends Controller
          return view('stock.index',compact('stocks'))
              ->with('i', ($request->input('page', 1) - 1) * 5);
      }
-
     public function destroy($stock_id)
     {
         Stock::find($stock_id)->delete();
