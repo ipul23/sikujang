@@ -28,11 +28,19 @@ class DashboardController extends Controller {
         }
         $lava = new Lavacharts; // See note below for Laravel
 		$dataProduksi = $lava->DataTable();
-		$dataProduksi->addDateColumn('Date')
-		             ->addNumberColumn('Inisiasi')
-		             ->addNumberColumn('Aklimatisasi')
-		             ->addNumberColumn('Transplanting');
-		$data = DB::table('stocks');
+		$dataProduksi->addDateColumn('Month')
+		             ->addNumberColumn('Data produksi')
+		for ($i=1; $i<=12; $i++){
+			$sum = 0;
+			foreach(DB::table('stocks')->where('date','LIKE','%'.$stock->created_at->format('m').'%') as $stock){
+				$sum+=$stock->stock_quantity;
+			}
+			$dataProduksi->addRow(['$i',$sum]);
+		}
+		
+		$lava->LineChart('Temps', $dataProduksi, [
+		    'title' => 'grafik data produksi'
+		]);
 		foreach(\App\stock::all() as $stock){
 			$inisiasi = DB::table('stocks')->where('stage',$stock->Inisiasi)->where('created_at','LIKE','%'.$stock->created_at->format('Y-m-d').'%')->count();
 			$Aklimatisasi = DB::table('stocks')->where('stage',$stock->Aklimatisasi)->where('created_at','LIKE','%'.$stock->created_at->format('Y-m-d').'%')->count();
@@ -40,9 +48,6 @@ class DashboardController extends Controller {
 			$Transplanting = DB::table('stocks')->where('stage',$stock->Transplanting)->where('created_at','LIKE','%'.$stock->created_at->format('Y-m-d').'%')->count();
 			$dataProduksi->addRow([$stock->created_at->format('Y-m-d'),$inisiasi,$Aklimatisasi,$Transplanting]);
 		}
-		$lava->LineChart('Temps', $dataProduksi, [
-		    'title' => 'grafik data produksi'
-		]);
         return View('home',['produk'=>$produk,'demand'=>$permintaan,'lava'=>$lava]);
 	}
 

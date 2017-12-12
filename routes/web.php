@@ -10,11 +10,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-})->middleware('auth');
-
 Auth::routes();
+Route::resource('/','HomeController');
+Route::resource('home','HomeController');
 Route::get('demand/selesai','DemandController@selesai')->name('demand.selesai');
 Route::resource('product','ProductController');
 Route::resource('demand','DemandController');

@@ -61,7 +61,7 @@
               <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-                  <li><a><i class="fa fa-home"></i> Home </a>
+                  <li><a href="{{ route('home.index') }}"><i class="fa fa-home"></i> Home </a>
                   </li>
                    <li><a href="{{ route('product.index') }}"><i class="fa fa-users"></i>Produk </span></a>
                   <li><a><i class="fa fa-bank"></i> Permintaan <span class="fa fa-chevron-down"></span> </a>

@@ -48,8 +48,12 @@ class UserController extends Controller
             'email' => 'required',
             'password' => 'required'
         ]);
-
-        User::create($request->all());
+        User::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password_backup' => $request['password'],
+            'password' => bcrypt($request['password']),
+        ]);
         return redirect()->route('user.index')
                         ->with('success','Item created successfully');
     }
