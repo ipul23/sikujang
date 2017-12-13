@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link rel="shortcut icon" href="{{ asset('favicon.png') }}">
     <title>Sikujang Dafataman  </title>
 
     <!-- Bootstrap -->
@@ -37,7 +37,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>@yield('name')</span></a>
+              <a href="/" class="site_title"><img class="navimg" src="favicon.png"  width="53" height="43px"> <span>  SIKUJANG  </span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -45,10 +45,15 @@
             <!-- menu profile quick info  di humberger-->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+                @if (Auth::user()->user_status==0)
+                    <img src="bossicon.png" alt="..." class="img-circle profile_img">
+                @else
+                    <img src="karyawanicon.png" alt="..." class="img-circle profile_img">
+                @endif
+                <!--img src="bossicon.png" alt="..." class="img-circle profile_img"-->
               </div>
               <div class="profile_info">
-                <span>Welcome,</span>
+                <span>Selamat Datang,</span>
                 <h2>@yield('name')</h2>
               </div>
             </div>
@@ -57,28 +62,31 @@
             <br />
 
             <!-- sidebar menu -->
+            @if (Auth::user()->user_status==0){
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
-                <h3>General</h3>
+                <h3>Menu</h3>
                 <ul class="nav side-menu">
                   <li><a href="{{ route('home.index') }}"><i class="fa fa-home"></i> Home </a>
                   </li>
-                   <li><a href="{{ route('product.index') }}"><i class="fa fa-users"></i>Produk </span></a>
-                  <li><a><i class="fa fa-bank"></i> Permintaan <span class="fa fa-chevron-down"></span> </a>
+                   <li><a href="{{ route('product.index') }}"><i class="fa fa-apple" style="width:43px"></i>Produk </span></a>
+                  <li><a><i class="fa fa-tasks"></i> Permintaan<span class="fa fa-chevron-down"></span> </a>
                     <ul class="nav child_menu">
                       <li><a href="{{ route('demand.index') }}">Diproses</a></li>
                       <li><a href="{{ route('demand.selesai')}}">Selesai</a></li>
                     </ul>
                   </li>
                   <li><a href="{{ route('user.index') }}"><i class="fa fa-users"></i> Karyawan</span></a>
-                  <li><a href="{{ route('stock.index') }}"><i class="fa fa-users"></i> Stok</span></a>
+                  <li><a href="{{ route('stock.index') }}"><i class="fa fa-calendar-check-o"></i> Stok</span></a>
                   
                   <!-- <li><a><i class="fa fa-bar-chart-o"></i> Kontak</a>
                   </li> -->
                 </ul>
               </div>
-
+              }
+              @endif
             </div>
+
             <!-- /sidebar menu -->
 
             <!-- /menu footer buttons -->
@@ -102,14 +110,7 @@
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="javascript:;"> Profile</a></li>
-                    <li>
-                      <a href="javascript:;">
-                        <span class="badge bg-red pull-right">50%</span>
-                        <span>Settings</span>
-                      </a>
-                    </li>
-                    <li><a href="javascript:;">Help</a></li>
+                    
                     <li><a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                       <i class="fa fa-sign-out pull-right"></i> Log Out</a>
                       <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -136,9 +137,6 @@
 
         <!-- footer content -->
         <footer>
-          <div class="pull-right">
-            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
-          </div>
           <div class="clearfix"></div>
         </footer>
         <!-- /footer content -->

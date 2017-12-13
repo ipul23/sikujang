@@ -59,14 +59,19 @@
             <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
-                <h3>General</h3>
+                <h3>Menu</h3>
                 <ul class="nav side-menu">
-                  <li><a><i class="fa fa-home"></i> Home </a>
+                  <li><a href="{{ route('home.index') }}"><i class="fa fa-home"></i> Home </a>
                   </li>
-                   <li><a href="{{ route('product.index') }}"><i class="fa fa-users"></i>Produk </span></a>
-                  <li><a href="{{ route('demand.index') }}"><i class="fa fa-users"></i>Permintaan </span></a>
-                  <li><a href="{{ route('user.index') }}"><i class="fa fa-users"></i> Karyawan </span></a>
-                  <li><a href="{{ route('stock.index') }}"><i class="fa fa-users"></i> Stok</span></a>
+                   <li><a href="{{ route('product.index') }}"><i class="fa fa-apple" style="width:43px"></i>Produk </span></a>
+                  <li><a><i class="fa fa-tasks"></i> Permintaan<span class="fa fa-chevron-down"></span> </a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{ route('demand.index') }}">Diproses</a></li>
+                      <li><a href="{{ route('demand.selesai')}}">Selesai</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="{{ route('user.index') }}"><i class="fa fa-users"></i> Karyawan</span></a>
+                  <li><a href="{{ route('stock.index') }}"><i class="fa fa-calendar-check-o"></i> Stok</span></a>
                   
                   <!-- <li><a><i class="fa fa-bar-chart-o"></i> Kontak</a>
                   </li> -->
