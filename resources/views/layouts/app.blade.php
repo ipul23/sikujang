@@ -37,7 +37,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="/" class="site_title"><img class="navimg" src="favicon.png"  width="53" height="43px"> <span>  SIKUJANG  </span></a>
+              <a href="/" class="site_title"><img class="navimg" src="../favicon.png"  width="53" height="43px"> <span>  SIKUJANG  </span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -46,9 +46,9 @@
             <div class="profile clearfix">
               <div class="profile_pic">
                 @if (Auth::user()->user_status==0)
-                    <img src="bossicon.png" alt="..." class="img-circle profile_img">
+                    <img src="../bossicon.png" alt="..." class="img-circle profile_img">
                 @else
-                    <img src="karyawanicon.png" alt="..." class="img-circle profile_img">
+                    <img src="../karyawanicon.png" alt="..." class="img-circle profile_img">
                 @endif
                 <!--img src="bossicon.png" alt="..." class="img-circle profile_img"-->
               </div>
@@ -62,7 +62,7 @@
             <br />
 
             <!-- sidebar menu -->
-            @if (Auth::user()->user_status==0){
+            @if (Auth::user()->user_status==0)
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <h3>Menu</h3>
@@ -83,7 +83,6 @@
                   </li> -->
                 </ul>
               </div>
-              }
               @endif
             </div>
 
