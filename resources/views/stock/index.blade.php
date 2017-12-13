@@ -1,17 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
-
+<br><br>
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
                 <h2>Data Produksi</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('stock.create') }}"> Tambah data produksi baru</a>
+                <a class="btn btn-success" href="{{ route('stock.create') }}" id="produkbutton"> Tambah Data Produksi Baru</a>
             </div>
         </div>
     </div>
+
+    <br>
 
     <!-- Form Pencarian -->
     <div class="col-md-10">
@@ -39,7 +41,7 @@
     @endif
 
     <br>
-    <table class="table table-bordered">
+    <table id="datatable-buttons" class="table table-striped table-bordered">
         <tr>
             <th>No</th>
             <th>Tanggal</th>
@@ -52,7 +54,7 @@
     @foreach ($stocks as $stock)
     <tr>
         <td>{{ ++$i }}</td>
-        <td>{{ $stock->created_at }}</td>
+        <td>{{ $stock->date }}</td>
         <td>{{ \App\product::find($stock->product_id)->product_name }}</td>
         <td>{{ $stock->stage }}</td>
         <td>{{ $stock->stock_increase }}</td>

@@ -20,7 +20,7 @@ class LoginController extends Controller
 
       $checkLogin = DB::table('users')->where(['email'=>$email,'password'=>$password])->get();
       //echo $checkLogin;
-      if(count($checkLogin)  >0)
+      if(count($checkLogin)>0)
       {
         $produk = 0;
         foreach(\App\product::all() as $product){
@@ -53,7 +53,7 @@ class LoginController extends Controller
       }
       else
       {
-       return back()->withInput()->withErrors(['email' =>'Email atau Password salah']);
+       return back()->withInput()->withErrors(['email' =>'Email atau Password salah tesss']);
      }
    }
  }
