@@ -9,6 +9,7 @@ class Demand extends Model {
     public $fillable = [
     	'product_id',
     	'demand_id',
+        'demand_price',
         'demand_status',
     	'demand_quantity',
     	'client_name',

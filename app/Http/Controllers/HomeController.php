@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Khill\Lavacharts\Lavacharts;
 use DB;
+use Auth;
+use App\Employee;
 
 class HomeController extends Controller
 {
@@ -40,12 +42,12 @@ class HomeController extends Controller
         $dataProduksi = $lava->DataTable();
         $dataProduksi->addDateColumn('Date')
                      ->addNumberColumn('Data produksi');
-        $st = DB::table('stocks')->orderBy('date')->get();
-        $str = "2017-00-07";
+        $st = DB::table('stocks')->where('stage','=','Aklimatisasi')->orderBy('date')->get();
+        $str = \Carbon\Carbon::now();
         $sum = 0;
         foreach($st as $stock){
-            if ($str != $stock->date){
-                if ($str!="2017-00-07"){
+            if (\Carbon\Carbon::parse($str)->format('m') != \Carbon\Carbon::parse($stock->date)->format('m')){
+                if (\Carbon\Carbon::parse($str)->format('m')!=\Carbon\Carbon::now()->format('m')){
                     $dataProduksi->addRow([$str,$sum]);
                 }
                   $str = $stock->date;  
@@ -54,6 +56,7 @@ class HomeController extends Controller
                 $sum += $stock->stock_quantity;
             }
         }
+        $dataProduksi->addRow([$str,$sum]);
         $lava->LineChart('Temps', $dataProduksi, [
             'title' => 'grafik data produksi'
         ]);

@@ -4,10 +4,10 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Daftar Permintaan</h2>
+                <h2>Daftar permintaan</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('demand.create') }}"> Tambah Permintaan Baru</a>
+                <a class="btn btn-success" href="{{ route('demand.create') }}"> Tambah permintaan baru</a>
             </div>
         </div>
     </div>
@@ -18,7 +18,7 @@
         </div>
     @endif
 
-    <table class="table table-bordered">
+    <table id="datatable-buttons" class="table table-stripped table-bordered">
         <tr>
             <th>No</th>
             <th>Nama pembeli</th>
@@ -27,6 +27,7 @@
             <th>Catatan</th>
             <th>Opsi</th>
         </tr>
+
     @foreach ($demands as $demand)
     <tr>
         <td>{{ ++$i }}</td>

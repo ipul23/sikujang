@@ -1,4 +1,4 @@
-<?php 
+<?php
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,8 +13,12 @@
 Auth::routes();
 Route::resource('/','HomeController');
 Route::resource('home','HomeController');
+Route::get('user/log','UserController@log')->name('user.log');
 Route::get('demand/selesai','DemandController@selesai')->name('demand.selesai');
-Route::resource('product','ProductController');
 Route::resource('demand','DemandController');
+Route::resource('product','ProductController');
+Route::get('grafik/produksi','ChartProduksiController@index')->name('grafik.produksi');
+Route::get('grafik/perjenis','ChartPerjenisController@index')->name('grafik.perjenis');
+Route::get('grafik/keuntungan','ChartKeuntunganController@index')->name('grafik.keuntungan');
 Route::resource('stock','StockController');
 Route::resource('user','UserController');

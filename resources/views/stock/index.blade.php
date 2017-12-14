@@ -1,19 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
-<br><br>
+
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
                 <h2>Data Produksi</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('stock.create') }}" id="produkbutton"> Tambah Data Produksi Baru</a>
+                <a class="btn btn-success" href="{{ route('stock.create') }}"> Tambah data produksi baru</a>
             </div>
         </div>
     </div>
-
-    <br>
 
     <!-- Form Pencarian -->
     <div class="col-md-10">
@@ -41,7 +39,8 @@
     @endif
 
     <br>
-    <table id="datatable-buttons" class="table table-striped table-bordered">
+    <table id="datatable-buttons" class="table table-stripped table-bordered">
+      <thead>
         <tr>
             <th>No</th>
             <th>Tanggal</th>
@@ -51,6 +50,9 @@
             <th>Pengurangan</th>
             <th>Pilihan</th>
         </tr>
+      </thead>
+
+    <tbody>
     @foreach ($stocks as $stock)
     <tr>
         <td>{{ ++$i }}</td>
@@ -86,6 +88,7 @@
         </td>
     </tr>
     @endforeach
+  </tbody>
     </table>
 
     {{ $stocks->render() }}

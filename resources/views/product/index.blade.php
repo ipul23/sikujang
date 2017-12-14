@@ -4,10 +4,10 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Daftar Produk</h2>
+                <h2>Daftar produk</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('product.create') }}"> Tambah Produk Baru</a>
+                <a class="btn btn-success" href="{{ route('product.create') }}"> Tambah produk baru</a>
             </div>
         </div>
     </div>
@@ -18,13 +18,17 @@
         </div>
     @endif
 
-    <table class="table table-bordered">
+    <table id="datatable-buttons" class="table table-stripped table-bordered">
+      <thead>
         <tr>
             <th>No</th>
             <th>Nama produk</th>
             <th>Harga produk</th>
             <th>Pilihan</th>
         </tr>
+      </thead>
+
+    <tbody>
     @foreach ($products as $key => $product)
     <tr>
         <td>{{ ++$i }}</td>
@@ -58,6 +62,7 @@
         </td>
     </tr>
     @endforeach
+  </tbody>
     </table>
 
     {{ $products->render() }}
@@ -66,4 +71,3 @@
 @section('name')
   {{ Auth::user()->name }}
 @endsection
-

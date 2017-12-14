@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Demand;
 use App\Product;
 
-class DemandController extends Controller
+class DemandSelesaiController extends Controller
 {
 
     /**
@@ -19,16 +19,11 @@ class DemandController extends Controller
      */
     public function index(Request $request)
     {
-        $demands = Demand::orderBy('demand_id')->where('demand_status','=',1)->paginate(5);
+        $demands = Demand::orderBy('demand_id')->where('demand_status','=','2')->paginate(5);
         return view('demand.index',compact('demands'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }
-    public function selesai(Request $request)
-    {
-        $demands = Demand::orderBy('demand_id')->where('demand_status','=',0 )->paginate(5);
-        return view('demand.selesai',compact('demands'))
-            ->with('i', ($request->input('page', 1) - 1) * 5);
-    }
+
 
     /**
      * Show the form for creating a new resource.

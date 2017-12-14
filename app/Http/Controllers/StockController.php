@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Stock;
 use DB;
+use Auth;
 class StockController extends Controller
 {
     /**
@@ -14,8 +15,22 @@ class StockController extends Controller
      */
     public function index(Request $request)
     {
-      $cari = $request->get('search');
-      $stocks = Stock::where('stage','LIKE','%'.$cari.'%')->paginate(5);
+        $cari = $request->get('search');
+        $stocks = Stock::where('stage','LIKE','%'.$cari.'%')->paginate(5);
+        $t = DB::table('users')->where('user_status','=',1)->where('id','=',Auth::user()->id)->get();
+        foreach ($t as $at){
+          if ($at->id == Auth::user()->id){
+            $tc = DB::table('employees')->where('employee_id','=',Auth::user()->id)->get();
+            foreach($tc as $t){
+                if (\Carbon\Carbon::parse($t->date)->format('Y-m-d') == \Carbon\Carbon::parse(\Carbon\Carbon::now())->format('Y-m-d')){
+                    return view('stock.index',compact('stocks'))
+                    ->with('i', ($request->input('page', 1) - 1) * 5);      
+                }
+            }
+            DB::table('employees')->insert(['employee_id'=>Auth::user()->id]);
+          }
+        }
+      
       return view('stock.index',compact('stocks'))
           ->with('i', ($request->input('page', 1) - 1) * 5);
 #        $stocks = Stock::orderBy('stock_id')->paginate(5);

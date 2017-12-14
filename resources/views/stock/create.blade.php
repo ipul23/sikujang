@@ -60,3 +60,7 @@
     </div>
     {{ Form::close() }}
 @endsection
+@endsection
+@section('name')
+  {{ Auth::user()->name }}
+@endsection

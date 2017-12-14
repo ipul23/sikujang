@@ -37,7 +37,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="/" class="site_title"><img class="navimg" src="../favicon.png"  width="53" height="43px"> <span>  SIKUJANG  </span></a>
+              <a href="#" class="site_title"><img class="navimg" src="../../favicon.png"  width="53" height="43px"> <span>  SIKUJANG  </span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -46,9 +46,9 @@
             <div class="profile clearfix">
               <div class="profile_pic">
                 @if (Auth::user()->user_status==0)
-                    <img src="../bossicon.png" alt="..." class="img-circle profile_img">
+                    <img src="../../bossicon.png" alt="..." class="img-circle profile_img">
                 @else
-                    <img src="../karyawanicon.png" alt="..." class="img-circle profile_img">
+                    <img src="../../karyawanicon.png" alt="..." class="img-circle profile_img">
                 @endif
                 <!--img src="bossicon.png" alt="..." class="img-circle profile_img"-->
               </div>
@@ -76,9 +76,20 @@
                       <li><a href="{{ route('demand.selesai')}}">Selesai</a></li>
                     </ul>
                   </li>
-                  <li><a href="{{ route('user.index') }}"><i class="fa fa-users"></i> Karyawan</span></a>
+                  <li><a><i class="fa fa-users"></i>Karyawan<span class="fa fa-chevron-down"></span> </a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{ route('user.index') }}">Tambah Karyawan</a></li>
+                      <li><a href="{{ route('user.log')}}">Login hari ini</a></li>
+                    </ul>
+                  </li>
                   <li><a href="{{ route('stock.index') }}"><i class="fa fa-calendar-check-o"></i> Stok</span></a>
-                  
+                  <li><a><i class="fa fa-bar-chart"></i>Grafik<span class="fa fa-chevron-down"></span> </a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{ route('grafik.produksi') }}">Grafik produksi</a></li>
+                      <li><a href="{{ route('grafik.perjenis')}}">Grafik perjenis & tahapan</a></li>
+                      <li><a href="{{ route('grafik.keuntungan')}}">Grafik keuntungan</a></li>
+                    </ul>
+                  </li>
                   <!-- <li><a><i class="fa fa-bar-chart-o"></i> Kontak</a>
                   </li> -->
                 </ul>
@@ -109,7 +120,7 @@
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    
+
                     <li><a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                       <i class="fa fa-sign-out pull-right"></i> Log Out</a>
                       <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

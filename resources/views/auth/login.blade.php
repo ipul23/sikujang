@@ -8,7 +8,6 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <title>Login - Sikujang</title>
-<link rel="shortcut icon" href="{{ asset('favicon.png') }}">
 <!-- Bootstrap core CSS-->
 <link href="{{ url('asset_admin/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 <!-- Custom fonts for this template-->
@@ -62,10 +61,6 @@
         Login
     </button>
 </form>
-        <div class="text-center">
-        <a class="d-block small mt-3" href="{{ route('register') }}">Register an Account</a>
-        <a class="d-block small" href="{{ url('asset_admin/forgot-password.html')}}">Forgot Password?</a>
-        </div>
     </div>
     </div>
 </div>

@@ -27,7 +27,7 @@
                 {{ \App\product::find($demand->product_id)->product_name }}
             </div>
         </div>
-        
+
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Tanggal pemesanan : </strong>
@@ -49,7 +49,11 @@
             </div>
         </div>
 
+
+
+
         <div class="col-xs-12 col-sm-12 col-md-12">
+
             <div class="form-group">
                 <strong>Keterangan : </strong>
                 {{ $demand->demand_note }}

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
+use App\Employee;
 
 
 class UserController extends Controller
@@ -18,11 +19,16 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        $users  = User::orderBy('id','name')->paginate(5);
+        $users  = User::orderBy('id','name')->where('user_status','=',1)->paginate(5);
         return view('user.index',compact('users'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }
-
+    public function log(Request $request)
+    {
+        $users  = Employee::orderBy('employee_id')->whereDate('created_at',\Carbon\Carbon::parse(\Carbon\Carbon::now())->format('Y-m-d'))->paginate(5);
+        return view('user.log',compact('users'))
+            ->with('i', ($request->input('page', 1) - 1) * 5);
+    }
     /**
      * Show the form for creating a new resource.
      *
