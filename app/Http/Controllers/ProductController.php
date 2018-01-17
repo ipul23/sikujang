@@ -45,7 +45,7 @@ class ProductController extends Controller
     {
         $this->validate($request, [
             'product_name' => 'required',
-            'product_price' => 'required',
+            'product_price' => 'required|integer|min:0',
             'product_desc' => 'required'
         ]);
 

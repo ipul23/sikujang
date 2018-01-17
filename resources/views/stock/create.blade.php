@@ -44,13 +44,13 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Penambahan</strong>
-                {{ Form::textarea('stock_increase', null, array('placeholder' => 'Pertambahan Produk','class' => 'form-control','style'=>'height:40px')) }}
+                {{ Form::number('stock_increase', null, array('placeholder' => 'Pertambahan Produk','class' => 'form-control','style'=>'height:40px')) }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Pengurangan</strong>
-                {{ Form::textarea('stock_decrease', null, array('placeholder' => 'Pengurangan Produk','class' => 'form-control','style'=>'height:40px')) }}
+                {{ Form::number('stock_decrease', null, array('placeholder' => 'Pengurangan Produk','class' => 'form-control','style'=>'height:40px')) }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
@@ -59,7 +59,6 @@
           {{ Form::hidden('stock_quantity') }}
     </div>
     {{ Form::close() }}
-@endsection
 @endsection
 @section('name')
   {{ Auth::user()->name }}

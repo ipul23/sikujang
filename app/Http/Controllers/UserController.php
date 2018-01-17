@@ -51,12 +51,14 @@ class UserController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-            'email' => 'required',
-            'password' => 'required'
+            'email' => 'required|email',
+            'password' => 'required|min:6',
+            'password_confirmation' => 'required|min:6|same:password'
         ]);
         User::create([
             'name' => $request['name'],
             'email' => $request['email'],
+            'password_confirmation' => $request['password_confirmation'],
             'password_backup' => $request['password'],
             'password' => bcrypt($request['password']),
         ]);

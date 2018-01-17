@@ -24,13 +24,13 @@ class StockController extends Controller
             foreach($tc as $t){
                 if (\Carbon\Carbon::parse($t->date)->format('Y-m-d') == \Carbon\Carbon::parse(\Carbon\Carbon::now())->format('Y-m-d')){
                     return view('stock.index',compact('stocks'))
-                    ->with('i', ($request->input('page', 1) - 1) * 5);      
+                    ->with('i', ($request->input('page', 1) - 1) * 5);
                 }
             }
             DB::table('employees')->insert(['employee_id'=>Auth::user()->id]);
           }
         }
-      
+
       return view('stock.index',compact('stocks'))
           ->with('i', ($request->input('page', 1) - 1) * 5);
 #        $stocks = Stock::orderBy('stock_id')->paginate(5);
@@ -58,8 +58,8 @@ class StockController extends Controller
         $product = \App\product::pluck('product_name','product_id');
         $this->validate($request, [
             'product_id' => 'required',
-            'stock_increase' => 'required',
-            'stock_decrease' => 'required',
+            'stock_increase' => 'required|integer|min:0',
+            'stock_decrease' => 'required|integer|min:0',
             'stage' => 'required',
             'stock_quantity'
         ]);

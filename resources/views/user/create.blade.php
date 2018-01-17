@@ -45,6 +45,12 @@
                 {{ Form::password('password', null, array('placeholder' => 'Password','class' => 'form-control','style'=>'width:300px','name'=>'password', 'type'=>'password')) }}
             </div>
         </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Retype Password:</strong><br>
+                {{ Form::password('password_confirmation', null, array('placeholder' => 'Retype Password','class' => 'form-control','style'=>'width:300px','name'=>'password_confirmation', 'type'=>'password')) }}
+            </div>
+        </div>
 
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">Submit</button>

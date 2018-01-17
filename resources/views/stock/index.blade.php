@@ -14,9 +14,8 @@
     </div>
 
     <!-- Form Pencarian -->
-    <div class="col-md-10">
+    <!-- <div class="col-md-10">
     {{ Form::open(['method'=>'GET','route'=>'stock.index','role'=>'search']) }}
-            <!-- input type="text" class="form-control" name="search" placeholder="Search..." -->
             <div class="col-sm-2">
             <select name="search" class="form-control">
                 <option value="Inisiasi">Inisiasi</option>
@@ -29,7 +28,7 @@
              </span>
          </div>
     {{ Form::close() }}
-    </div>
+    </div> -->
 
 
     @if ($message = Session::get('success'))
@@ -53,7 +52,7 @@
       </thead>
 
     <tbody>
-    @foreach ($stocks as $stock)
+    @foreach ($stocks->reverse() as $stock)
     <tr>
         <td>{{ ++$i }}</td>
         <td>{{ $stock->date }}</td>
