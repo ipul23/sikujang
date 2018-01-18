@@ -4,10 +4,14 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Daftar permintaan</h2>
+                <h2>Daftar Permintaan</h2>
             </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 margin-tb">
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('demand.create') }}"> Tambah permintaan baru</a>
+                <a class="btn btn-success" href="{{ route('demand.create') }}"> Tambah Permintaan    <i class="fa fa-plus" aria-hidden="true"></i></a>
             </div>
         </div>
     </div>
@@ -21,9 +25,9 @@
     <table class="table table-bordered">
         <tr>
             <th>No</th>
-            <th>Nama pembeli</th>
-            <th>Nama produk</th>
-            <th>Tanggal permintaan</th>
+            <th>Nama Pembeli</th>
+            <th>Nama Produk</th>
+            <th>Tanggal Permintaan</th>
             <th>Catatan</th>
             <th>Opsi</th>
         </tr>

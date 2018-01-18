@@ -4,13 +4,10 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Daftar produk</h2>
+                <h2>Daftar Produk</h2>
             </div>
-            <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('product.create') }}"> Tambah produk baru</a>
-            </div>
-        </div>
-    </div>
+
+
 
     @if ($message = Session::get('success'))
         <div class="alert alert-success">
@@ -18,13 +15,13 @@
         </div>
     @endif
 
-    <table id="datatable-buttons" class="table table-stripped table-bordered">
+    <table id="datatable-buttons" class="table table-stripped table-bordered" style="width:100%">
       <thead>
         <tr>
-            <th>No</th>
-            <th>Nama produk</th>
-            <th>Harga produk</th>
-            <th>Pilihan</th>
+            <th >No</th>
+            <th >Nama Produk</th>
+            <th >Harga Produk</th>
+            <th >Pilihan</th>
         </tr>
       </thead>
 
@@ -48,20 +45,26 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="myModalLabel">Apa anda yakin ingin menghapus produk ini?</h4>
                   </div>
-                  <div class="modal-body">
-                    ...
-                  </div>
-                  <div class="modal-footer">
+
+                  <div class="modal-footer" >
                     <button type="button" class="btn btn-default" data-dismiss="modal">Tidak</button>
                     {{Form::open(['method' => 'delete','route' => ['product.destroy', $product->product_id],'style'=>'display:inline']) }}
-                    {{Form::submit('Ya', ['class' => 'btn btn-success']) }}
+                    {{Form::submit('Ya', ['class' => 'btn btn-danger']) }}
                   </div>
                 </div>
               </div>
             </div>
         </td>
     </tr>
+
     @endforeach
+    <div class="row">
+        <div class="col-lg-12 margin-tb">
+            <div class="pull-right">
+                <a class="btn btn-success" href="{{ route('product.create') }}">  Tambah Produk    <i class="fa fa-plus" aria-hidden="true"></i></a>
+            </div>
+        </div>
+    </div>
   </tbody>
     </table>
 

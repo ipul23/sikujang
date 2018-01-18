@@ -5,8 +5,12 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Ubah data produksi</h2>
+                <h2>Ubah Data Produksi</h2>
             </div>
+          </div>
+        </div>
+        <div class="row">
+        <div class="col-lg-12 margin-tb">
             <div class="pull-right">
                 <a class="btn btn-primary" href="{{ route('stock.index') }}"> Kembali</a>
             </div>
@@ -46,7 +50,7 @@
           </div>
 
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-success">Submit</button>
         </div>
 
     </div>

@@ -4,8 +4,12 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Tambah produk</h2>
+                <h2>Tambah Produk</h2>
             </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 margin-tb">
             <div class="pull-right">
                 <a class="btn btn-primary" href="{{ route('product.index') }}"> Kembali</a>
             </div>
@@ -28,25 +32,25 @@
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Nama produk:</strong>
+                <strong>Nama Produk:</strong>
                 {{ Form::textarea('product_name', null, array('placeholder' => 'Nama produk','class' => 'form-control','style'=>'height:40px')) }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Harga produk:</strong>
+                <strong>Harga Produk:</strong>
                 {{ Form::textarea('product_price', null, array('placeholder' => 'Harga produk','class' => 'form-control','style'=>'height:40px')) }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Deskripsi produk:</strong>
+                <strong>Deskripsi Produk:</strong>
                 {{ Form::textarea('product_desc', null, array('placeholder' => 'Deskripsi Produk','class' => 'form-control','style'=>'height:100px')) }}
             </div>
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-success">Submit</button>
         </div>
 
     </div>

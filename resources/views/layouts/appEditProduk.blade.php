@@ -18,7 +18,7 @@
     <link href="../../vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
     <link href="../../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     <!-- bootstrap-progressbar -->
     <link href="../../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
@@ -117,6 +117,7 @@
                     <img src="images/img.jpg" alt="">@yield('name')
                     <span class=" fa fa-angle-down"></span>
                   </a>
+                  <ul class="dropdown-menu dropdown-usermenu pull-right">
 
                     <li><a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                       <i class="fa fa-sign-out pull-right"></i> Log Out</a>
@@ -144,9 +145,7 @@
 
         <!-- footer content -->
         <footer>
-          <div class="pull-right">
-            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
-          </div>
+
           <div class="clearfix"></div>
         </footer>
         <!-- /footer content -->

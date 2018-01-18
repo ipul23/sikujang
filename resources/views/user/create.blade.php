@@ -7,6 +7,10 @@
             <div class="pull-left">
                 <h2>Tambah Karyawan</h2>
             </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 margin-tb">
             <div class="pull-right">
                 <a class="btn btn-primary" href="{{ route('user.index') }}"> Kembali</a>
             </div>
@@ -40,9 +44,9 @@
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
+            <div class="form-group" >
                 <strong>Password:</strong><br>
-                {{ Form::password('password', null, array('placeholder' => 'Password','class' => 'form-control','style'=>'width:300px','name'=>'password', 'type'=>'password')) }}
+                {{ Form::password('password', null, array('placeholder' => 'Password','class' => 'form-control','style'=>'width:1000px','name'=>'password', 'type'=>'password')) }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
@@ -53,7 +57,7 @@
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-success">Submit</button>
         </div>
 
     </div>

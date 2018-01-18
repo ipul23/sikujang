@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('content')
+@section('content')<br><br><br>
     @for ($j=1; $j<$i; $j++)
             <div id="div_{{ $j }}"></div>
             @linechart($j.'div','div_'.$j)

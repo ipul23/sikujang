@@ -7,8 +7,12 @@
             <div class="pull-left">
                 <h2>Data Produksi</h2>
             </div>
+          </div>
+        </div>
+     <div class="row">
+        <div class="col-lg-12 margin-tb">   
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('stock.create') }}"> Tambah data produksi baru</a>
+                <a class="btn btn-success" href="{{ route('stock.create') }}">Tambah Produksi <i class="fa fa-plus" aria-hidden="true"></i></a>
             </div>
         </div>
     </div>
@@ -43,7 +47,7 @@
         <tr>
             <th>No</th>
             <th>Tanggal</th>
-            <th>Nama produk</th>
+            <th>Nama Produk</th>
             <th>Tahapan</th>
             <th>Penambahan</th>
             <th>Pengurangan</th>
@@ -73,13 +77,13 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="myModalLabel">Apa anda yakin ingin menghapus produk ini?</h4>
                   </div>
-                  <div class="modal-body">
+<!--                   <div class="modal-body">
                     ...
-                  </div>
+                  </div> -->
                   <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Tidak</button>
                     {{Form::open(['method' => 'delete','route' => ['stock.destroy', $stock->stock_id],'style'=>'display:inline']) }}
-                    {{Form::submit('Ya', ['class' => 'btn btn-success']) }}
+                    {{Form::submit('Ya', ['class' => 'btn btn-danger']) }}
                   </div>
                 </div>
               </div>

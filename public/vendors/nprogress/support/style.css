@@ -213,3 +213,7 @@ div.hr-rule {
   margin: 0 auto;
   text-align: center;
 }
+
+.bg-dark {
+    background-color: #fff!important;
+}

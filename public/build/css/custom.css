@@ -498,6 +498,7 @@ body {
     font-size: 13px;
     font-weight: 400;
     line-height: 1.471
+
 }
 .main_container .top_nav {
     display: block;
@@ -4254,3 +4255,7 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
     background-color: #ffff !important;
 }
 /** /bootstrap-datetimepicker **/
+
+.bg-dark {
+    background-color: #fff!important;
+}

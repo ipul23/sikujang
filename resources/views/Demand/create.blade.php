@@ -5,8 +5,12 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Tambah pesanan</h2>
+                <h2>Tambah Pesanan</h2>
             </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 margin-tb">
             <div class="pull-right">
                 <a class="btn btn-primary" href="{{ route('demand.index') }}"> Kembali</a>
             </div>
@@ -28,13 +32,13 @@
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Nama pemesan :</strong>
+                <strong>Nama Pemesan :</strong>
                 {{ Form::textarea('client_name', null, array('placeholder' => 'Nama pemesan','class' => 'form-control','style'=>'height:40px')) }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Pilih produk:</strong>
+                <strong>Pilih Produk:</strong>
                 {{Form::select('product_id',$product,null,array('class'=>'form-control'))}}
             </div>
         </div>
@@ -52,7 +56,7 @@
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-success">Submit</button>
         </div>
 
     </div>
